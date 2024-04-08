@@ -14,11 +14,11 @@ pip install -r requirements.txt
 ```
 ### Batch runs
 In order to run a basic parameter evaluation study:
-- Run the [main.py](main.py) script that returns a [runs.csv](runs.csv) with collected variables per simulation step
+- Run the [run_batches.py](run_batches.py) script that returns a [runs.csv](runs.csv) with collected variables per simulation step
   - the script simulates multiple models for 50 steps for the following combinations of parameters:
     1) `beta = [0, 0.1,...,0.9, 1.0]`
     2) `hot_configuration = [True, False]`
-- Code to visualize the collected data is found in [plotting.ipynb](plotting.ipynb)
+- Code to visualize the collected data is found in [parameter_evaluation.ipynb](parameter_evaluation.ipynb)
 
 ## Files
 
