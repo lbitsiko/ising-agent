@@ -29,8 +29,8 @@ model files:
 - [run.py](ising/run.py): code to launch the server that visualizes a model run
 
 batch run:
-- [main.py](main.py): script that runs multiple batches of simulations
+- [run_batches.py](run_batches.py): script that runs multiple batches of simulations
 - [runs.csv](runs.csv): the collected data from the batch run
-- [plotting.ipynb](plotting.ipynb): a notebook for visualizing the collected data
+- [plottiparameter_evaluation.ipynb](parameter_evaluation.ipynb): a notebook for visualizing the collected data
 
 
