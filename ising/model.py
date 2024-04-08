@@ -63,7 +63,7 @@ class IsingModel(Model):
             neighbors = self.grid.get_neighbors((x, y), moore=False)  # von Neumann neighbors
             for neighbor in neighbors:
                 energy -= current_spin * neighbor.state
-        return energy / 2  
+        return energy  
 
     def calculate_magnetization(self):
         """

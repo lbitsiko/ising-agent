@@ -9,7 +9,7 @@ import time
 start_time = time.time()
 
 configurations = [True, False]
-betas = [0.0, 0.1, 0.2, 0.21, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+betas = np.arange(0, 1.0, 0.1)
 num_steps = 50
 
 steps, Es, Ms, betas_run, configurations_run, models = [], [], [], [], [], []
