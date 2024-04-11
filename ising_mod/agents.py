@@ -6,7 +6,7 @@ class Spin(Agent):
     Spin in the Ising model
     """
 
-    def __init__(self, pos, model, state):
+    def __init__(self, pos, model, state, color, algo="heat_bath"):
         """
         Create a new spin agent.
 
@@ -18,7 +18,9 @@ class Spin(Agent):
         super().__init__(pos, model) # allows base class to work with pos + model
         self.pos = pos
         self.state = state
-        
+        self.color = color
+        self.algo = algo
+    
     def sum_neighboring_spins(self):
         """ 
             Sum of neighboring spins
@@ -40,9 +42,15 @@ class Spin(Agent):
         sum_of_neighboring_spins = self.sum_neighboring_spins()
         return sum_of_neighboring_spins * self.state
 
+    def compute_local_field(self):
+        neighbors = self.model.grid.iter_neighbors(
+            pos=self.pos, 
+            moore=False
+            )
+        return np.sum([neighbor.state for neighbor in neighbors])
+    
 
-
-    def step(self):
+    def step_Metropolis(self):
         """
             Implementation following the Metropolis algorithm 
             based on the (Anagnostopoulos, 2016) implementation, see: https://dx.doi.org/10.57713/kallipos-946  
@@ -53,6 +61,21 @@ class Spin(Agent):
             self.state = -self.state
         elif np.random.random() < self.model.probs[int(abs(dE)/2)]:  # Spin flips based on the Metropolis criterion
             self.state = -self.state
-        
 
+    def step_heat_bath(self):
+        """
+            Heat bath implementation based on 
+            https://courses.physics.illinois.edu/phys498cmp/sp2022/Ising/IsingModel.html
+        """
+        local_field = self.compute_local_field()        
+        up_prob =  1 / (1 + np.exp(-2 * self.model.beta * local_field))
+        self.state = 1 if np.random.random() < up_prob else -1      
 
+    def step(self):
+        """
+            Update spin based on chosen method
+        """
+        if self.algo == "metropolis":
+            self.step_Metropolis()
+        else:  # elif self.algo == "heat_bath":
+            self.step_heat_bath()
