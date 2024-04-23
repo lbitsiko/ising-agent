@@ -23,6 +23,13 @@ pip install -r requirements.txt
 - [server.py](ising/server.py): code for interactive visualization
 - [run.py](ising/run.py): code to launch the server that visualizes a model run
 
+## Visual Example
+
+An example model state can be seen in the following picture, where agents having their spin "up" are visualized with a dark color and agents with their spin "down" are visualized in light grey:
+
+<img src="../screenshot.png" alt="dashboard" width="200"/>
+
+
 # References
 
 - Anagnostopoulos, K. (2016, January). *Computational Physics*. Kallipos, Open Academic
