@@ -13,7 +13,7 @@ configurations = [True]  # True: hot, False: cold
 num_steps = 1000
 field_value = 0
 grid_size = 30
-activation = "simultaneous"
+activation = "random"
 algo = "metropolis"
 
 # variable parameters
