@@ -53,7 +53,7 @@ class IsingModel(Model):
     Sets up Spin agents advances each time step.
     """
     
-    def __init__(self, L, beta, seed=69, hot_configuration=True, activation="random", algo="heat_bath"):
+    def __init__(self, L, beta, seed=69, hot_configuration=True, activation="random", algo="heat_bath", magnetic_field=0):
         """ 
         Initializes grid with Spin agents occupying each position
         """
@@ -68,6 +68,8 @@ class IsingModel(Model):
         self.grid = SingleGrid(L, L, torus = True)  # torroidal boundary conditions
         
         self.algo = algo
+
+        self.magnetic_field = magnetic_field  # external field
 
         if activation == "random":
             self.schedule = RandomActivation(self)
@@ -118,7 +120,8 @@ class IsingModel(Model):
             neighbors = self.grid.get_neighbors((x, y), moore=False)  # von Neumann neighbors
             for neighbor in neighbors:
                 energy -= current_spin * neighbor.state
-        return energy  
+            energy -= self.magnetic_field * current_spin  # magnetic field contribution
+        return energy
 
     def calculate_magnetization(self):
         """

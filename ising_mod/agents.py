@@ -40,14 +40,14 @@ class Spin(Agent):
             Calculation of energy change
         """
         sum_of_neighboring_spins = self.sum_neighboring_spins()
-        return sum_of_neighboring_spins * self.state
-
+        return (sum_of_neighboring_spins - self.model.magnetic_field) * self.state  # with external magnetic field term
+        
     def compute_local_field(self):
         neighbors = self.model.grid.iter_neighbors(
             pos=self.pos, 
             moore=False
             )
-        return np.sum([neighbor.state for neighbor in neighbors])
+        return np.sum([(1 - self.model.magnetic_field) * neighbor.state for neighbor in neighbors])  # with external magnetic field term
     
 
     def step_Metropolis(self):

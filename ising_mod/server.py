@@ -46,6 +46,11 @@ model_params = {
         name = "Step algorithm",
         value = "heat_bath",
         choices = ["heat_bath", "metropolis"]
+    ),
+    "magnetic_field": mesa.visualization.Choice(
+         name="External field", 
+         value=0.0, 
+         choices=[-1, 0, 1]
     )
     
 }
