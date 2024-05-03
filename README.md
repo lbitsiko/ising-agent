@@ -30,7 +30,7 @@ In order to run some parameter evaluation studies:
       - `activation = "simultaneous"`
       - `algo = "heat_bath"`
       - `hot_configuration = False`
-      - `betas = [0.1, 0.2, ...,0.9, 1.0`
+      - `betas = [0.1, 0.11, ...,0.99, 1.0`
       - `magnetic_field = [-1, 0, 1]`
   - [batch_run_voting.py](batch_run_voting.py)
     - `num_steps = 1000`
