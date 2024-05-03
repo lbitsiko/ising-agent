@@ -11,7 +11,7 @@ import random
 
 class VotingModel(Model):
     """ A simple voting model """
-    def __init__(self, L, seed=69, activation="random", prob=0.5):
+    def __init__(self, L, seed=69, activation="random", prob=0.5, algo="majority"):
         super().__init__()
 
         self.L = L
@@ -22,6 +22,7 @@ class VotingModel(Model):
 
         self.activation = activation
         self.prob = prob
+        self.algo = algo 
 
         if self.activation == "random":
             self.schedule = RandomActivation(self)

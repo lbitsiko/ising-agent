@@ -1,31 +1,34 @@
-# Ising Model
+# Voter Model
 
 ## Summary
 
-The Ising model was first developed by Ising as a model for ferromagnetism (Ising, 1925) and has historically played a major role in the development of Statistical Physics and Quantum Field Theory (Anagnostopoulos, 2016). Its two-dimensional version exhibits a phase transition of second order and can be applied to the study of the liquid-to-gas phase transition.
+This Voter model is an implementation of the voting agents described in [*Phase transition and power-law coarsening in an Ising-doped voter model*](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.96.032145) by Adam Lipowski, Dorota Lipowska, and António Luis Ferreira.
 
-In its 2-D version presented here, the model is composed of atoms having either their spin "up", or "down" occupying each position in a square lattice. The atoms interact based on the spin-spin interaction.
+In its 2-D version presented here, the model is composed of agents placed on a square lattice, having either a positive or negative opinion. In each simulation step, agents decide to change their opinion looking at the opinions of their nearest neighbors based on:
+
+1) a **majority** mechanism, in which agents randonly decide to take up the majority opinion of their neighbors
+2) a **persuasion** mechanism, in which agents randomly adopt the opinion of one of their neighbors
 
 ## How to run
-To launch the model run:
 
-```
-python ising/run.py
-```
-Make sure to install the requirements first:
+To launch the model install the requirements first:
 ```
 pip install -r requirements.txt
 ```
+
+and then run:
+```
+python voter/run.py
+```
+
 ## Files
 
-- [model.py](ising/model.py): the 2-D Ising model
-- [agents.py](ising/agents.py): code containing the Ising Spin agent 
-- [server.py](ising/server.py): code for interactive visualization
-- [run.py](ising/run.py): code to launch the server that visualizes a model run
+- [model.py](voter/model.py): the 2-D Voter model
+- [agents.py](voter/agents.py): code containing the voting agent class 
+- [server.py](voter/server.py): code for interactive visualization
+- [run.py](voter/run.py): code to launch the server that visualizes a model run
 
 # References
 
-- Anagnostopoulos, K. (2016, January). *Computational Physics*. Kallipos, Open Academic
-Editions. Retrieved April 4, 2024, from https://dx.doi.org/10.57713/kallipos-946
-- Ising, E. (1925). Beitrag zur Theorie des Ferromagnetismus. *Zeitschrift f ̈ur Physik, 31*(1),
-253–258. https://doi.org/10.1007/BF02980577
+- Lipowski, A., Lipowska, D., & Ferreira, A. L. (2017). Phase transition and power-law coarsen-
+ing in Ising-doped voter model. *Physical Review E, 96* (3), 032145. [doi](https://doi.org/10.1103/PhysRevE.96.032145)

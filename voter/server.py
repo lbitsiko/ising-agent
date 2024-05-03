@@ -32,7 +32,11 @@ model_params = {
         name = "Activation Function",
         value = "random",
         choices = ["random", "simultaneous"]
-    )
+    ),
+    "algo":mesa.visualization.Choice(
+        name="Transition algorithm",
+        value="majority",
+        choices=["majority", "stochastic_persuasion"])
 }
 
 # call the various visualization elements

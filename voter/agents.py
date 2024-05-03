@@ -11,6 +11,7 @@ class Voter(Agent):
         self.pos = pos
         self.state = state 
         self.prob = self.model.prob
+        self.algo = self.model.algo
 
     def step(self):
         # majority opinion of neighbors
@@ -21,9 +22,13 @@ class Voter(Agent):
                                                                 )
                             ]
         if neighbor_opinions:
-            majority_opinion = 1 if sum(neighbor_opinions) > 0 else -1
-            if np.random.random() > self.prob:
-                self.state = majority_opinion
-            else:  # if np.random.random() > self.prob:
-                self.state = - self.state
-
+            if self.algo == "majority":
+                majority_opinion = 1 if sum(neighbor_opinions) > 0 else -1
+                if np.random.random() > self.prob:
+                    self.state = majority_opinion
+                else:  # if np.random.random() > self.prob:
+                    self.state = - majority_opinion#self.state
+            elif self.algo=="stochastic_persuasion":
+                random_index = np.random.randint(0, 4)
+                if np.random.random() > self.prob:
+                    self.state = neighbor_opinions[random_index]
