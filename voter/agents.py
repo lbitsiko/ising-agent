@@ -5,7 +5,7 @@ import numpy as np
 # TODO: implement randomly getting the opinion of a neighbor
 
 class Voter(Agent):
-    """ A voting agent that aligns its opinion with the majority opinion of its neighbors. """
+    """ A voting agent that aligns its opinion based on the opinions of its neighbors """
     def __init__(self, pos, model, state):
         super().__init__(pos, model)
         self.pos = pos
