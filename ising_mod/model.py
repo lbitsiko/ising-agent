@@ -2,6 +2,7 @@ import numpy as np
 from mesa import Model
 from mesa.space import SingleGrid
 from mesa.time import RandomActivation, BaseScheduler, SimultaneousActivation
+from mesa.datacollection import DataCollector
 from agents import Spin
 import pickle
 
@@ -70,12 +71,13 @@ class IsingModel(Model):
         self.algo = algo
 
         self.magnetic_field = magnetic_field  # external field
+        self.activation = activation 
 
-        if activation == "random":
+        if self.activation == "random":
             self.schedule = RandomActivation(self)
-        elif activation == "color":
+        elif self.activation == "color":
             self.schedule = CustomColorActivation(self) 
-        elif activation == "simultaneous":
+        elif self.activation == "simultaneous":
             self.schedule = SimultaneousActivation(self)
         
         self.beta = beta
@@ -102,13 +104,30 @@ class IsingModel(Model):
             agent = Spin(pos=(x, y), model=self, state=state, color=color, algo=algo)
             self.grid.place_agent(agent, pos=(x, y))
             self.schedule.add(agent)
-            
+
+        # DataCollector
+        self.datacollector = DataCollector(
+            model_reporters={"energy": self.calculate_energy,
+                             "magnetization": self.calculate_magnetization,
+                            #  "field": (lambda x: self.magnetic_field),
+                            #  "beta": (lambda x: self.beta),
+                            #  "algo": (lambda x: self.algo),
+                            #  "seed": (lambda x: self.seed),
+                            #  "hot_configuration": (lambda x: self.hot_configuration),
+                            #  "grid_size": (lambda x: self.L)
+                             }
+                             )    
     
     def step(self):
         """
         Run one step of the model. 
         """
         self.schedule.step()
+        self.datacollector.collect(self)
+
+    def run_model(self, steps):
+        for i in range(steps):
+            self.step()
 
     def calculate_energy(self):
         """
