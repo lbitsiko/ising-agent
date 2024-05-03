@@ -23,7 +23,7 @@ python voter/run.py
 
 ## Files
 
-- [model.py](voter/model.py): the 2-D Voter model
+- [model.py](model.py): the 2-D Voter model
 - [agents.py](agents.py): code containing the voting agent class 
 - [server.py](server.py): code for interactive visualization
 - [run.py](run.py): code to launch the server that visualizes a model run
