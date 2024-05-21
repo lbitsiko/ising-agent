@@ -28,6 +28,9 @@ python voter/run.py
 - [server.py](server.py): code for interactive visualization
 - [run.py](run.py): code to launch the server that visualizes a model run
 
+## Typical runs
+<img src="../plots/tyical_runs/persuasion.png" alt="dashboard" width="200"/> <img src="../plots/tyical_runs/majority.png" alt="dashboard" width="200"/> 
+
 # References
 
 - Lipowski, A., Lipowska, D., & Ferreira, A. L. (2017). Phase transition and power-law coarsen-

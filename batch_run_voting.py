@@ -13,7 +13,6 @@ params = {
     "L": [30],  
     "prob": np.arange(0.1, 1.0, 0.1).tolist(),
     "activation": ["simultaneous"],
-    "seed": [69],
     "algo": ["majority", "stochastic_persuasion"]
 }
 
@@ -23,9 +22,9 @@ if __name__ == "__main__":
     results = batch_run(
         VotingModel,
         parameters=params,
-        iterations=1,
+        iterations=100,
         max_steps=1000,
-        number_processes=3,  
+        number_processes=4,  
         data_collection_period=1,
         display_progress=True
     )
