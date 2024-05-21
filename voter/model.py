@@ -11,7 +11,7 @@ import random
 
 class VotingModel(Model):
     """ A simple voting model """
-    def __init__(self, L, seed=69, activation="random", prob=0.5, algo="majority"):
+    def __init__(self, L, seed=None, activation="random", prob=0.5, algo="majority"):
         super().__init__()
 
         self.L = L
@@ -28,9 +28,11 @@ class VotingModel(Model):
             self.schedule = RandomActivation(self)
         elif self.activation == "simultaneous":
             self.schedule = SimultaneousActivation(self)
-        
-        self.seed = seed
-        np.random.seed(self.seed)
+
+        # set random seed if needed
+        if seed:
+            self.seed = seed
+            np.random.seed(self.seed)
 
         # initialize grid and spins
         for _, (x, y) in self.grid.coord_iter():
@@ -68,7 +70,7 @@ class VotingModel(Model):
             for neighbor in neighbors:
                 energy -= current_spin * neighbor.state
             energy -= self.magnetic_field * current_spin  # magnetic field contribution
-        return energy
+        return energy / (self.L * self.L)
 
     def calculate_magnetization(self):
         """
