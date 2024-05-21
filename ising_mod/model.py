@@ -54,7 +54,7 @@ class IsingModel(Model):
     Sets up Spin agents advances each time step.
     """
     
-    def __init__(self, L, beta, seed=69, hot_configuration=True, activation="random", algo="heat_bath", magnetic_field=0):
+    def __init__(self, L, beta, seed=None, hot_configuration=True, activation="random", algo="heat_bath", magnetic_field=0):
         """ 
         Initializes grid with Spin agents occupying each position
         """
@@ -83,8 +83,10 @@ class IsingModel(Model):
         self.beta = beta
         self.probs = [np.exp(-2.0 * self.beta * i) for i in range(2, 9, 2)]
 
-        self.seed = seed
-        np.random.seed(self.seed)
+        # set random seed if needed
+        if seed:
+            self.seed = seed
+            np.random.seed(self.seed)
 
         # cold initial configuration: 1, cold
         self.hot_configuration = hot_configuration
@@ -140,7 +142,7 @@ class IsingModel(Model):
             for neighbor in neighbors:
                 energy -= current_spin * neighbor.state
             energy -= self.magnetic_field * current_spin  # magnetic field contribution
-        return energy
+        return energy / (self.L * self.L)
 
     def calculate_magnetization(self):
         """

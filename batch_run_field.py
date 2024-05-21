@@ -11,12 +11,11 @@ from model import IsingModel
 # input parameters
 params = {
     "L": [30],  
-    "beta": np.arange(0.1, 1.0, 0.01).tolist(),
+    "beta": np.arange(0.1, 1.0, 0.1).tolist(),
     "magnetic_field": [-1, 0, 1],
-    "hot_configuration": [False],#[True, False],
-    "algo": ["heat_bath"],#["metropolis", "heat_bath"], 
-    "activation": ["simultaneous"],
-    "seed": [69]
+    "hot_configuration": [True],
+    "algo": ["metropolis"],
+    "activation": ["simultaneous"]
 }
 
 if __name__ == "__main__":
@@ -25,7 +24,7 @@ if __name__ == "__main__":
     results = batch_run(
         IsingModel,
         parameters=params,
-        iterations=1,
+        iterations=100,
         max_steps=1000,
         number_processes=3,  
         data_collection_period=1,
