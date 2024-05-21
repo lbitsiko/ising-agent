@@ -60,3 +60,25 @@ batch run:
 - [batch_run_voting.py](batch_run_voting.py): batch run script that runs multiple simulations for the Voter model
 - [studies](studies): folder with the collected data from the batch runs
 - [parameter_evaluation.ipynb](parameter_evaluation.ipynb): a notebook for visualizing the collected data
+
+## Cite code and data
+
+The analysis code and data can be cited as noted on the [CITATION.cff](CITATION.cff) file.
+
+In BibTeX:
+
+```
+@software{bitsikokos_ising_2024,
+	title = {Ising model for ABM simulations},
+	url = {https://github.com/lbitsiko/ising-agent},
+	author = {Bitsikokos, Loizos},
+	urldate = {2024-05-21},
+	date = {2024},
+}
+```
+
+or in APA:
+
+```
+Bitsikokos, L. (2024). _Ising model for ABM simulations_. [Software]. Retrieved May 21, 2024, from https://github.com/lbitsiko/ising-agent
+```
