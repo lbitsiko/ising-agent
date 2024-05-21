@@ -23,6 +23,9 @@ pip install -r requirements.txt
 - [server.py](server.py): code for interactive visualization
 - [run.py](run.py): code to launch the server that visualizes a model run
 
+## Typical run
+<img src="../plots/tyical_runs/ising.png" alt="dashboard" width="200"/>
+
 # References
 
 - Anagnostopoulos, K. (2016, January). *Computational Physics*. Kallipos, Open Academic

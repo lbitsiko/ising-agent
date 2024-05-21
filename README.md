@@ -1,7 +1,7 @@
 # ising-agent
 This repository contains code to simulate an [Ising model](https://stanford.edu/~jeffjar/statmech/intro4.html) and a [Voter model](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.96.032145) using the [Python Mesa framework](https://mesa.readthedocs.io/en/stable/).
 
-- **Ising model**: updating schemes implemented include the Metropolis algorithm and the Heat bath approach (see [here](https://courses.physics.illinois.edu/phys498cmp/sp2022/Ising/IsingModel.html)), while an external magnetic field is also introduced.
+- **Ising model**: updating schemes implemented include the Metropolis algorithm and the Heat bath approach (see [here](https://courses.physics.illinois.edu/phys498cmp/sp2022/Ising/IsingModel.html)), while an external magnetic field is also introduced (see [README](./ising_mod/README.md)).
 - **Voter model**: updating schemse include a *majority* vote and a *persuasion* mechanism (see [README](voter/README.md)).
 
 
@@ -28,9 +28,9 @@ In order to run some parameter evaluation studies:
       - `num_steps = 1000`
       - `grid_size = 30`
       - `activation = "simultaneous"`
-      - `algo = "heat_bath"`
-      - `hot_configuration = False`
-      - `betas = [0.1, 0.11, ...,0.99, 1.0`
+      - `algo = "metropolis"`
+      - `hot_configuration = True`
+      - `betas = [0.1, 0.1, ...,0.9, 1.0`
       - `magnetic_field = [-1, 0, 1]`
   - [batch_run_voting.py](batch_run_voting.py)
     - `num_steps = 1000`
@@ -38,7 +38,8 @@ In order to run some parameter evaluation studies:
     - `activation = "simultaneous"`
     - `algo = ["majority", "stochastic_persuasion"]`
     - `prob = [0.1, 0.2, ...,0.9, 1.0`
-- Code to visualize the collected data is found in [parameter_evaluation.ipynb](parameter_evaluation.ipynb)
+- Code to visualize the collected data is found in [parameter_evaluation.ipynb](parameter_evaluation.ipynb) and [model_comparison.ipynb.ipynb](model_comparison.ipynb.ipynb)
+The batch run data are also provided in a compressed format ([studies/batch_run_field.rar](./studies/batch_run_field.rar) and [batch_run_voting.rar](./studies/batch_run_voting.rar)).
 
 ## Files
 
