@@ -1,0 +1,9 @@
+cff-version: 1.0.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Bitsikokos
+    given-names: Loizos
+title: "Ising model for ABM simulations"
+version: 1.0.0
+date-released: 2024
+url: "https://github.com/lbitsiko/ising-agent"
