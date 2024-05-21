@@ -60,6 +60,7 @@ batch run:
 - [batch_run_voting.py](batch_run_voting.py): batch run script that runs multiple simulations for the Voter model
 - [studies](studies): folder with the collected data from the batch runs
 - [parameter_evaluation.ipynb](parameter_evaluation.ipynb): a notebook for visualizing the collected data
+- [model_comparison.ipynb](model_comparison.ipynb): a notebook for comparing models
 
 ## Cite code and data
 
